@@ -78,7 +78,7 @@
     <!-- tabel database -->
     <div class="" id="tabel">
     <?php if($status=="login"){ ?> 
-        <a href="#" data-toggle="modal"  class="btn btn-primary mb-2"
+        <a href="#" data-toggle="modal"  class="btn btn-info mb-2"
                             data-target="#tambahdata"><b><i class="fa fa-plus text-light"></i>  Tambah Data</b></a>
             <?php } ?>
    
@@ -95,7 +95,8 @@
             <?php } ?>
         </tr>
         </thead>
-		<?php 
+        <?php 
+        $nama="";
 		$no = 1;
         foreach($database ->result_array() as $u) :  //ubah variabel user ke u
             $id=$u['ID_UMKM'];
@@ -111,11 +112,11 @@
 			<td class="text-light"><?php echo $jenis;?></td> <!-- tampilkan data alamat dari database -->
             <td class="text-light"><?php echo $omset; ?></td> <!-- tampilkan data pekerjaan dari database -->
             <td class="text-light"><?php echo $pemilik; ?></td>
-            <?php if($status=="login"){ ?>
+            <?php if($status=="login"){ ?> 
 			<td class="text-center text-light">
-                <?php echo anchor('crud/edit/'.$id,'Edit'); ?> <!-- tombol edit -->
-                <!-- <?php echo anchor('crud/hapus/'.$id,'hapus'); ?>  -->
-                <a href="<?php echo base_url(). 'crud/hapus/'.$id ?>" onClick=confirm("Apakah kamu yakin akan mengunjungi petanikode?")>hapus</a>
+                <!-- <a data-toggle="modal" data-target="#modal-edit<?php $nama ?>" class="btn btn-warning btn-circle" data-popup="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-pencil"></i><?php echo $nama; ?></a> -->
+                <a  href="<?php echo base_url(). 'crud/edit/'.$id ?>" class="btn btn-warning">Ubah</a>
+                <a  onclick="return confirm('Yakin Hapus?')" href="<?php echo base_url(). 'crud/hapus/'.$id ?>" class="btn btn-danger ml-2">hapus</a>
             </td>
             <?php } ?>
 		</tr>
@@ -167,6 +168,53 @@
                     </div>
                     <div class="form-group">
                         <label for="username">Omset</label>
+                        <input type="number" name="omset" class="form-control" placeholder="Omset"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Pemilik</label>
+                        <input type="text" name="pemilik" placeholder="Pemilik" class="form-control" />
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit">Kirim</button>
+                    </div>
+                    </form>	
+                    <!-- end form login -->
+                </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+            </div>
+<!-- /.modal -->
+
+<!-- modal EDIT data -->
+
+    <div id="modal-edit<?php $nama ?>" class="modal fade" tabindex="-1" role="dialog"> 
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Edit Data</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form login -->
+                    <form action="<?php echo base_url(). 'crud/edit'; ?>" method="post"> <!-- form action -->
+                    <div class="form-group">
+                        <label for="username">Nama Usaha</label>
+                        <input type="text" name="nama" class="form-control" value="<?php echo $nama; ?>"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Jenis</label>
+                        <select name="jenis" class="form-control">
+                                    <option value="Kuliner">Kuliner</option>
+                                    <option value="Fasion">Fasion</option>
+                                    <option value="Pendidikan">Pendidikan</option>
+                                    <option value="Ototmotif">Ototmotif</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Omset</label>
                         <input type="text" name="omset" class="form-control" placeholder="Omset"/>
                     </div>
                     <div class="form-group">
@@ -184,21 +232,6 @@
             </div>
 <!-- /.modal -->
 
-
-    <!-- modal hapus barang -->
-    <div class="modal fade" id="modal_hapus<?php echo $id;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3 class="modal-title" id="myModalLabel">Hapus Barang</h3>
-            </div>
-            <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/barang/hapus_barang'?>">
-                <?php include md_hapus.php; ?>
-            </form>
-            </div>
-            </div>
-        </div>
 
     <!-- Js Plugins -->
     <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.1.min.js"></script>

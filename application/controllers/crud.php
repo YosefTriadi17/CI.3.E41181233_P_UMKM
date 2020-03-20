@@ -47,28 +47,30 @@ class Crud extends CI_Controller{
 	}
 
 	function edit($id){
-		$where = array('id' => $id); //ubah data yang telah ditangkap di variabel $id ke id
-		$data['user'] = $this->m_data->edit_data($where,'user')->result(); //tangkap data dari database
+		$where = array('ID_UMKM' => $id); //ubah data yang telah ditangkap di variabel $id ke id
+		$data['daftar_umkm'] = $this->m_data->edit_data($where,'daftar_umkm')->result(); //tangkap data dari database
 		$this->load->view('v_edit',$data); //tampilkan view v edit
 	}
 
 	function update(){
 		$id = $this->input->post('id'); //tangkap data id
 		$nama = $this->input->post('nama'); //tangkap data nama
-		$alamat = $this->input->post('alamat'); //tangkap data alamat
-		$pekerjaan = $this->input->post('pekerjaan'); //tangkap data pekerjaan
+		$jenis = $this->input->post('jenis'); //tangkap data alamat
+		$omset = $this->input->post('omset'); //tangkap data pekerjaan
+		$pemilik = $this->input->post('pemilik');
 	
 		$data = array( //ubah data ke array
-			'nama' => $nama,
-			'alamat' => $alamat,
-			'pekerjaan' => $pekerjaan
+			'NAMA_USAHA' => $nama,
+			'JENIS' => $jenis,
+			'OMSET' => $omset,
+			'PEMILIK' => $pemilik
 		);
 	
 		$where = array(
-			'id' => $id
+			'ID_UMKM' => $id
 		);
 	
-		$this->m_data->update_data($where,$data,'user'); //kirim data ke m data dan update database
-		redirect('crud/index'); //kembali tampilkan halaman crud
+		$this->m_data->update_data($where,$data,'daftar_umkm'); //kirim data ke m data dan update database
+		redirect('home#sumber'); //kembali tampilkan halaman crud
 	}
 }
