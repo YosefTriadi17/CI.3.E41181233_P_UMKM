@@ -25,10 +25,10 @@ class Crud extends CI_Controller{
 	}
 
 	function tambah_aksi(){
-		$nama = $this->input->post('nama'); 
-		$jenis = $this->input->post('jenis');
-		$omset = $this->input->post('omset');
-		$pemilik = $this->input->post('pemilik'); //ambil data pekerjaan
+		$nama = $this->input->post('nama');  //ambil data dari form
+		$jenis = $this->input->post('jenis'); //ambil data dari form
+		$omset = $this->input->post('omset'); //ambil data dari form
+		$pemilik = $this->input->post('pemilik'); //ambil data dari form
  
 		$data = array( //data yang didapat diubah ke array
 			'NAMA_USAHA' => $nama,
@@ -37,17 +37,17 @@ class Crud extends CI_Controller{
 			'PEMILIK' => $pemilik
 			);
 		$this->m_data->input_data($data,'daftar_umkm'); //data dikirim ke m data dan dimasukkan ke tabel user
-		redirect('home#sumber'); //kembali tampilkan halaman crud
+		redirect('home#sumber'); //kembali tampilkan halaman utama
 	}
 
 	function hapus($id){
-		$where = array('ID_UMKM' => $id); //ubah data yang telah ditangkap di variabel $id ke id
+		$where = array('ID_UMKM' => $id); //samakan dengan field database
 		$this->m_data->hapus_data($where,'daftar_umkm'); //data dikirim ke m data dan hapus data di tabel user
-		redirect('home#sumber'); //kembali tampilkan halaman crud
+		redirect('home#sumber'); //kembali tampilkan halaman utama
 	}
 
 	function edit($id){
-		$where = array('ID_UMKM' => $id); //ubah data yang telah ditangkap di variabel $id ke id
+		$where = array('ID_UMKM' => $id); //samakan dengan field database
 		$data['daftar_umkm'] = $this->m_data->edit_data($where,'daftar_umkm')->result(); //tangkap data dari database
 		$this->load->view('v_edit',$data); //tampilkan view v edit
 	}
@@ -55,9 +55,9 @@ class Crud extends CI_Controller{
 	function update(){
 		$id = $this->input->post('id'); //tangkap data id
 		$nama = $this->input->post('nama'); //tangkap data nama
-		$jenis = $this->input->post('jenis'); //tangkap data alamat
-		$omset = $this->input->post('omset'); //tangkap data pekerjaan
-		$pemilik = $this->input->post('pemilik');
+		$jenis = $this->input->post('jenis'); //tangkap data jenis
+		$omset = $this->input->post('omset'); //tangkap data omset
+		$pemilik = $this->input->post('pemilik'); //tangkap data pemilik
 	
 		$data = array( //ubah data ke array
 			'NAMA_USAHA' => $nama,

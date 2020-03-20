@@ -1,16 +1,27 @@
+<!DOCTYPE html>
+<html lang="zxx">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Specer Template">
+    <meta name="keywords" content="Specer, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UMKM</title>
 
+    <!-- Css Styles -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/styleedit.css" type="text/css">
+</head>
 <body>
 	<?php foreach($daftar_umkm as $u){ ?> 
 	
 	<!-- modal tambah data -->
+	<section class="bg-dark pt-5 pb-5">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
                 <h4 class="modal-title">Edit Data</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -49,4 +60,6 @@
             </div><!-- /.modal-dialog -->
 			<?php } ?>
 <!-- /.modal -->
+	</section>
 </body>
+</html>

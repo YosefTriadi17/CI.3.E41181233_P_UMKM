@@ -2,7 +2,7 @@
 
 class M_data extends CI_Model{
 	function tampil_data(){
-		return $this->db->get('user'); //ambil database tabel user
+		return $this->db->get('daftar_umkm'); //ambil tabel
 	}
 
 	function input_data($data,$table){

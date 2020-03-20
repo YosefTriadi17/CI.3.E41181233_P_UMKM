@@ -23,13 +23,12 @@
 
 <body>
     <!-- Page Preloder -->
-    <!-- <div id="preloder">
+    <div id="preloder">
         <div class="loader"></div>
-    </div> -->
+    </div>
     
 
-    <?php $status = $this->session->userdata('status'); echo base_url(); ?>
-
+    <?php $status = $this->session->userdata('status'); ?>
 
     
     <!-- Hero Section Begin -->

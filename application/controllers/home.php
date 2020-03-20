@@ -9,21 +9,20 @@ class Home extends CI_Controller{
 
 	}
 
-	function index(){ //method index
-        // $this->load->view('v_admin'); 
-        $this->header();
-        $this->content();
-        $this->footer();
+	function index(){ 
+        $this->header(); //panggil function di halaman yang sama
+        $this->content(); //panggil function di halaman yang sama
+        $this->footer(); //panggil function di halaman yang sama
     }
     
     function header(){ 
-		$this->load->view('v_header'); 
+		$this->load->view('v_header'); //tampilkan header
     }
     function footer(){ 
-		$this->load->view('v_footer'); 
+		$this->load->view('v_footer'); //tampilkan footer
     }
     function content(){ 
-        $data['database'] = $this->db->get('daftar_umkm');
-		$this->load->view('v_content', $data); 
+        $data['database'] = $this->db->get('daftar_umkm'); //database
+		    $this->load->view('v_content', $data); //tampilkan konten
 	}
 }
