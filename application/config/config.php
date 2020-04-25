@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/CI.3.E41181233_P_UMKM/';
+$config['base_url'] = 'http://localhost/Github/CI.3.E41181233_P_UMKM/';
 
 /*
 |--------------------------------------------------------------------------

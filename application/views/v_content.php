@@ -27,7 +27,6 @@
         <div class="loader"></div>
     </div>
     
-
     <?php $status = $this->session->userdata('status'); ?>
 
     
